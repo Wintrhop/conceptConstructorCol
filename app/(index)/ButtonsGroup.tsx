@@ -6,6 +6,7 @@ import {
   ArrowLeftIcon,
   CalendarPlusIcon,
   ClockIcon,
+  LinkIcon,
   ListFilterPlusIcon,
   MailCheckIcon,
   MoreHorizontalIcon,
@@ -19,13 +20,24 @@ import { ButtonGroup } from "@/components/ui/button-group"
 export const ButtonsGroup = ({
   deleteOnClick,
   copyOnClick,
+  copyUrlOnClick,
 }: {
   deleteOnClick: () => void
   copyOnClick: () => void
+  copyUrlOnClick: () => void
 }) => {
   return (
     <ButtonGroup>
       <ButtonGroup className="hidden sm:flex"></ButtonGroup>
+      <ButtonGroup>
+        <Button
+          variant="outline"
+          className="hover:bg-primary/10"
+          onClick={copyUrlOnClick}
+        >
+          <LinkIcon /> Copiar URL
+        </Button>
+      </ButtonGroup>
       <ButtonGroup>
         <Button className="hover:bg-primary/10" onClick={copyOnClick}>
           Copiar concepto

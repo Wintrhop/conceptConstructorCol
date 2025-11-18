@@ -428,6 +428,9 @@ export const UserForm = ({ concept }: { concept: string }) => {
         copyOnClick={() => {
           navigator.clipboard.writeText(concept)
         }}
+        copyUrlOnClick={() => {
+          navigator.clipboard.writeText(window.location.href)
+        }}
       />
 
       {/* <Input type="text" value={check} />
