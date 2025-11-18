@@ -81,7 +81,7 @@ export const UserForm = ({ concept }: { concept: string }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full gap-4">
-      <h1 className="text-2xl font-bold">Constructor de conceptos v0.0.1</h1>
+      <h1 className="text-2xl font-bold">Constructor de conceptos v0.0.3</h1>
       <div className="flex flex-col items-center justify-center w-full gap-4">
         <FieldGroupComponent
           label="Fecha de construcción"
