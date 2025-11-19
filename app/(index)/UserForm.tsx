@@ -8,10 +8,9 @@ import { ButtonsGroup } from "./ButtonsGroup"
 import { FieldGroupComponent } from "./FieldGroup"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Select } from "@/components/ui/select"
-import { SelectComponent } from "./SelectComponent"
-import { emergencyRouteOptions, otherOptions } from "./constants"
-import { PlusIcon } from "lucide-react"
+
+import FieldGroupOthers from "./FieldGroupOthers"
+import FieldGroupEmergency from "./FieldGroupemergy"
 
 export const UserForm = ({ concept }: { concept: string }) => {
   const router = useRouter()
@@ -81,37 +80,14 @@ export const UserForm = ({ concept }: { concept: string }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full gap-4">
-      <h1 className="text-2xl font-bold">Constructor de conceptos v0.0.3</h1>
+      <span className="text-sm text-gray-500">Versión 0.0.4</span>
+      <h1 className="text-2xl font-bold">Generador de Observaciones</h1>
       <div className="flex flex-col items-center justify-center w-full gap-4">
         <FieldGroupComponent
-          label="Fecha de construcción"
+          label="Cumple"
           description="Las opciones seleccionadas se utilizarán para generar el concepto"
           legend="Seleccione todas las opciones que correspondan"
         >
-          <Button
-            className={buildDate === "0" ? "bg-primary/10" : ""}
-            variant="outline"
-            onClick={(e) => {
-              e.preventDefault()
-              const query = createQueryString("buildDate", "0")
-              router.push(`${pathname}?${query}`, { scroll: false })
-            }}
-          >
-            Antes de 2010 {buildDate === "0" ? "✅" : ""}
-          </Button>
-          <Button
-            className={buildDate === "1" ? "bg-primary/10" : ""}
-            variant="outline"
-            onClick={(e) => {
-              e.preventDefault()
-              const query = createQueryString("buildDate", "1")
-              router.push(`${pathname}?${query}`, { scroll: false })
-            }}
-          >
-            Despues de 2010 {buildDate === "1" ? "✅" : ""}
-          </Button>
-        </FieldGroupComponent>
-        <FieldGroupComponent label="Cumple">
           <div className="flex items-center justify-center w-full gap-4">
             <Button
               className={check === "0" ? "bg-primary/10" : ""}
@@ -136,6 +112,30 @@ export const UserForm = ({ concept }: { concept: string }) => {
               NO {check === "1" ? "✅" : ""}
             </Button>
           </div>
+        </FieldGroupComponent>
+        <FieldGroupComponent label="Fecha de construcción">
+          <Button
+            className={buildDate === "0" ? "bg-primary/10" : ""}
+            variant="outline"
+            onClick={(e) => {
+              e.preventDefault()
+              const query = createQueryString("buildDate", "0")
+              router.push(`${pathname}?${query}`, { scroll: false })
+            }}
+          >
+            Antes de 2010 {buildDate === "0" ? "✅" : ""}
+          </Button>
+          <Button
+            className={buildDate === "1" ? "bg-primary/10" : ""}
+            variant="outline"
+            onClick={(e) => {
+              e.preventDefault()
+              const query = createQueryString("buildDate", "1")
+              router.push(`${pathname}?${query}`, { scroll: false })
+            }}
+          >
+            Despues de 2010 {buildDate === "1" ? "✅" : ""}
+          </Button>
         </FieldGroupComponent>
         <FieldGroupComponent label="Plan de emergencia">
           <div className="flex items-center justify-center w-full gap-4">
@@ -328,92 +328,20 @@ export const UserForm = ({ concept }: { concept: string }) => {
           </div>
         </FieldGroupComponent>
 
-        <FieldGroupComponent label="Rutas de evacuación">
-          <div className=" flex flex-col items-center justify-center w-full gap-4">
-            <SelectComponent
-              options={emergencyRouteOptions}
-              placeholder="Selecciona una opción"
-              handleChange={(value) => {
-                handleRemoveOrAdd("emergencyRoute1", emergencyRoute1, value)
-              }}
-              variable="emergencyRoute1"
-              value={emergencyRoute1 || undefined}
-            />
-            <SelectComponent
-              options={emergencyRouteOptions}
-              placeholder="Selecciona una opción"
-              handleChange={(value) => {
-                handleRemoveOrAdd("emergencyRoute2", emergencyRoute2, value)
-              }}
-              variable="emergencyRoute2"
-              value={emergencyRoute2 || undefined}
-            />
-            <SelectComponent
-              options={emergencyRouteOptions}
-              placeholder="Selecciona una opción"
-              handleChange={(value) => {
-                handleRemoveOrAdd("emergencyRoute3", emergencyRoute3, value)
-              }}
-              variable="emergencyRoute3"
-              value={emergencyRoute3 || undefined}
-            />
-            <SelectComponent
-              options={emergencyRouteOptions}
-              placeholder="Selecciona una opción"
-              handleChange={(value) => {
-                handleRemoveOrAdd("emergencyRoute4", emergencyRoute4, value)
-              }}
-              variable="emergencyRoute4"
-              value={emergencyRoute4 || undefined}
-            />
-          </div>
-          {/* <Button variant="outline" size="icon">
-            <PlusIcon />
-          </Button> */}
-        </FieldGroupComponent>
-        <FieldGroupComponent label="Otros">
-          <div className=" flex flex-col items-center justify-center w-full gap-4">
-            <SelectComponent
-              options={otherOptions}
-              placeholder="Selecciona una opción"
-              handleChange={(value) =>
-                handleRemoveOrAdd("other1", other1, value)
-              }
-              variable="other1"
-              value={other1 || undefined}
-            />
-            <SelectComponent
-              options={otherOptions}
-              placeholder="Selecciona una opción"
-              handleChange={(value) => {
-                handleRemoveOrAdd("other2", other2, value)
-              }}
-              variable="other2"
-              value={other2 || undefined}
-            />
-            <SelectComponent
-              options={otherOptions}
-              placeholder="Selecciona una opción"
-              handleChange={(value) => {
-                handleRemoveOrAdd("other3", other3, value)
-              }}
-              variable="other3"
-              value={other3 || undefined}
-            />
-            <SelectComponent
-              options={otherOptions}
-              placeholder="Selecciona una opción"
-              handleChange={(value) => {
-                handleRemoveOrAdd("other4", other4, value)
-              }}
-              variable="other4"
-              value={other4 || undefined}
-            />
-          </div>
-          {/* <Button variant="outline" size="icon">
-            <PlusIcon />
-          </Button> */}
-        </FieldGroupComponent>
+        <FieldGroupEmergency
+          emergencyRoute1={emergencyRoute1}
+          emergencyRoute2={emergencyRoute2}
+          emergencyRoute3={emergencyRoute3}
+          emergencyRoute4={emergencyRoute4}
+          handleRemoveOrAdd={handleRemoveOrAdd}
+        />
+        <FieldGroupOthers
+          other1={other1}
+          other2={other2}
+          other3={other3}
+          other4={other4}
+          handleRemoveOrAdd={handleRemoveOrAdd}
+        />
       </div>
       <Textarea
         value={concept as string}
@@ -432,13 +360,6 @@ export const UserForm = ({ concept }: { concept: string }) => {
           navigator.clipboard.writeText(window.location.href)
         }}
       />
-
-      {/* <Input type="text" value={check} />
-      <Input type="text" value={emergencyPlan} />
-      <Input type="text" value={extintor} />
-      <Input type="text" value={fireProtection} />
-      <Input type="text" value={emergencyLight} />
-      <Input type="text" value={emergencyRoute1} /> */}
     </div>
   )
 }
