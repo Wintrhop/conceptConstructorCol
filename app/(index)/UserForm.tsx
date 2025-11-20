@@ -86,7 +86,7 @@ export const UserForm = ({ concept }: { concept: string }) => {
       <div className="flex flex-col items-center justify-center w-full gap-4">
         <FieldGroupComponent
           label="Cumple"
-          description="Las opciones seleccionadas se utilizarán para generar el concepto"
+          description="Las opciones seleccionadas se utilizarán para generar las observaciones"
           legend="Seleccione todas las opciones que correspondan"
         >
           <div className="flex items-center justify-center w-full gap-4">
@@ -351,12 +351,12 @@ export const UserForm = ({ concept }: { concept: string }) => {
       />
       <ButtonsGroup
         deleteOnClick={() => {
-          toast.success("Concepto borrado")
+          toast.success("Observaciones borradas")
           const query = deleteQueryString()
           router.push(`${pathname}${query ? "?" + query : ""}`)
         }}
         copyOnClick={() => {
-          toast.success("Concepto copiado")
+          toast.success("Observaciones copiadas")
           navigator.clipboard.writeText(concept)
         }}
         copyUrlOnClick={() => {

@@ -40,7 +40,7 @@ export const ButtonsGroup = ({
       </ButtonGroup>
       <ButtonGroup>
         <Button className="hover:bg-primary/10" onClick={copyOnClick}>
-          Copiar concepto
+          Copiar observaciones
         </Button>
       </ButtonGroup>
       <ButtonGroup>
