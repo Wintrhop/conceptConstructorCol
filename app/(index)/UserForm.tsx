@@ -11,6 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 import FieldGroupOthers from "./FieldGroupOthers"
 import FieldGroupEmergency from "./FieldGroupemergy"
+import { toast } from "sonner"
 
 export const UserForm = ({ concept }: { concept: string }) => {
   const router = useRouter()
@@ -80,7 +81,7 @@ export const UserForm = ({ concept }: { concept: string }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full gap-4">
-      <span className="text-sm text-gray-500">Versión 0.0.4</span>
+      <span className="text-sm text-gray-500">Versión 0.0.5</span>
       <h1 className="text-2xl font-bold">Generador de Observaciones</h1>
       <div className="flex flex-col items-center justify-center w-full gap-4">
         <FieldGroupComponent
@@ -350,13 +351,16 @@ export const UserForm = ({ concept }: { concept: string }) => {
       />
       <ButtonsGroup
         deleteOnClick={() => {
+          toast.success("Concepto borrado")
           const query = deleteQueryString()
           router.push(`${pathname}${query ? "?" + query : ""}`)
         }}
         copyOnClick={() => {
+          toast.success("Concepto copiado")
           navigator.clipboard.writeText(concept)
         }}
         copyUrlOnClick={() => {
+          toast.success("URL copiada al portapapeles")
           navigator.clipboard.writeText(window.location.href)
         }}
       />
