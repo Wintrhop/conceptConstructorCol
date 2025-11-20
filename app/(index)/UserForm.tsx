@@ -32,25 +32,6 @@ export const UserForm = ({ concept }: { concept: string }) => {
   const other3 = searchParams.get("other3")
   const other4 = searchParams.get("other4")
 
-  const deleteQueryString = useCallback(() => {
-    const params = new URLSearchParams(searchParams.toString())
-    params.delete("buildDate")
-    params.delete("check")
-    params.delete("emergencyPlan")
-    params.delete("extintor")
-    params.delete("fireProtection")
-    params.delete("emergencyLight")
-    params.delete("emergencyRoute1")
-    params.delete("emergencyRoute2")
-    params.delete("emergencyRoute3")
-    params.delete("emergencyRoute4")
-    params.delete("other1")
-    params.delete("other2")
-    params.delete("other3")
-    params.delete("other4")
-    return params.toString()
-  }, [searchParams])
-
   const createQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString())
@@ -81,7 +62,7 @@ export const UserForm = ({ concept }: { concept: string }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full gap-4">
-      <span className="text-sm text-gray-500">Versión 0.0.6</span>
+      <span className="text-sm text-gray-500">Versión 0.0.7</span>
       <h1 className="text-2xl font-bold">Generador de Observaciones</h1>
       <div className="flex flex-col items-center justify-center w-full gap-4">
         <FieldGroupComponent
@@ -352,8 +333,8 @@ export const UserForm = ({ concept }: { concept: string }) => {
       <ButtonsGroup
         deleteOnClick={() => {
           toast.success("Observaciones borradas")
-          const query = deleteQueryString()
-          router.push(`${pathname}${query ? "?" + query : ""}`)
+          //add navigate to the pathname but without router.push
+          window.location.href = pathname
         }}
         copyOnClick={() => {
           toast.success("Observaciones copiadas")

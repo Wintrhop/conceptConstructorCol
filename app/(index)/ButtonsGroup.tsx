@@ -1,21 +1,10 @@
 "use client"
 
-import * as React from "react"
-import {
-  ArchiveIcon,
-  ArrowLeftIcon,
-  CalendarPlusIcon,
-  ClockIcon,
-  LinkIcon,
-  ListFilterPlusIcon,
-  MailCheckIcon,
-  MoreHorizontalIcon,
-  TagIcon,
-  Trash2Icon,
-} from "lucide-react"
+import { LinkIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
+import Link from "next/link"
 
 export const ButtonsGroup = ({
   deleteOnClick,
@@ -30,11 +19,7 @@ export const ButtonsGroup = ({
     <ButtonGroup>
       <ButtonGroup className="hidden sm:flex"></ButtonGroup>
       <ButtonGroup>
-        <Button
-          variant="outline"
-          className="hover:bg-primary/10"
-          onClick={copyUrlOnClick}
-        >
+        <Button variant="outline" className="hover:bg-primary/10">
           <LinkIcon /> Copiar URL
         </Button>
       </ButtonGroup>
