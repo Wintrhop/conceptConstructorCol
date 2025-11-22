@@ -62,7 +62,7 @@ export const UserForm = ({ concept }: { concept: string }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full gap-4">
-      <span className="text-sm text-gray-500">Versión 0.0.7</span>
+      <span className="text-sm text-gray-500">Versión 0.0.8</span>
       <h1 className="text-2xl font-bold">Generador de Observaciones</h1>
       <div className="flex flex-col items-center justify-center w-full gap-4">
         <FieldGroupComponent
