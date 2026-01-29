@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Generador de Observaciones",
-  description: "Generador de Observaciones para la administracion bomberil",
+  description:
+    "Generador de Observaciones para la Gestión de Riesgos Bomberos Colombia",
 }
 export default function RootLayout({
   children,
